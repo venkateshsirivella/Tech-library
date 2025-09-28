@@ -1,34 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Suspense } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
+import { motion } from 'framer-motion'
+import Layout from './components/Layout/Layout'
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+
+// Lazy loading for better performance
+const Login = React.lazy(() => import('./pages/Login/Login'))
+const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'))
+const VideoDetail = React.lazy(() => import('./pages/VideoDetail/VideoDetail'))
+
+// Loading component with animation
+const LoadingSpinner = () => (
+  <motion.div 
+    className="loading-container"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
+    <div className="spinner"></div>
+    <p>Loading...</p>
+  </motion.div>
+)
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+      <Layout>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            {/* Public route - Login */}
+            <Route path="/login" element={<Login />} />
+            
+            {/* Protected routes - Dashboard and Video Detail */}
+            <Route path="/dashboard" element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/video/:id" element={
+              <ProtectedRoute>
+                <VideoDetail />
+              </ProtectedRoute>
+            } />
+            
+            {/* Redirect root to dashboard */}
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            
+            {/* Catch all route - redirect to dashboard */}
+            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          </Routes>
+        </Suspense>
+        
+        {/* Toast notifications */}
+        <Toaster 
+          position="top-right"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: 'var(--card-bg)',
+              color: 'var(--text-color)',
+              border: '1px solid var(--border-color)',
+            },
+          }}
+        />
+      </Layout>
+    </Router>
   )
 }
 
