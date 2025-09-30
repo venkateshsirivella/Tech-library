@@ -78,7 +78,7 @@ const Login = () => {
               value={credentials.username}
               onChange={handleInputChange}
               className="form-input"
-              placeholder="Enter username (admin)"
+              placeholder="Enter username"
               required
             />
           </div>
@@ -94,7 +94,7 @@ const Login = () => {
               value={credentials.password}
               onChange={handleInputChange}
               className="form-input"
-              placeholder="Enter password (1234)"
+              placeholder="Enter password"
               required
             />
           </div>
