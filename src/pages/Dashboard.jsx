@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import VideoCard from '../../components/VideoCard/VideoCard'
-import ViewToggle from '../../components/ViewToggle/ViewToggle'
-import { videosData } from '../../data/videos'
+import VideoCard from '../components/VideoCard'
+import ViewToggle from '../components/ViewToggle'
+import { videosData } from '../data/videos'
 
 // Dashboard page showing video library with grid/list toggle
 const Dashboard = () => {

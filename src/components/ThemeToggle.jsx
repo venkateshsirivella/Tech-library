@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { useTheme } from '../../hooks/useTheme'
+import { useTheme } from '../hooks/useTheme'
 
 // Theme toggle component with smooth animations
 const ThemeToggle = () => {

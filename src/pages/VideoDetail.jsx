@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { videosData } from '../../data/videos'
+import { videosData } from '../data/videos'
 
 // Video detail page with embedded YouTube player
 const VideoDetail = () => {

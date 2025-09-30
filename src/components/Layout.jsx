@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import ThemeToggle from '../ThemeToggle/ThemeToggle'
-import { useAuth } from '../../hooks/useAuth'
+import ThemeToggle from './ThemeToggle'
+import { useAuth } from '../hooks/useAuth'
 import toast from 'react-hot-toast'
 
 // Main layout component with header and theme controls
