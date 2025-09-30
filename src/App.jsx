@@ -2,13 +2,13 @@ import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import { motion } from 'framer-motion'
-import Layout from './components/Layout/Layout'
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
+import Layout from './components/Layout'
+import ProtectedRoute from './components/ProtectedRoute'
 
 // Lazy loading for better performance
-const Login = React.lazy(() => import('./pages/Login/Login'))
-const Dashboard = React.lazy(() => import('./pages/Dashboard/Dashboard'))
-const VideoDetail = React.lazy(() => import('./pages/VideoDetail/VideoDetail'))
+const Login = React.lazy(() => import('./pages/Login'))
+const Dashboard = React.lazy(() => import('./pages/Dashboard'))
+const VideoDetail = React.lazy(() => import('./pages/VideoDetail'))
 
 // Loading component with animation
 const LoadingSpinner = () => (
