@@ -109,12 +109,6 @@ const Login = () => {
             {loading ? 'Logging in...' : 'Login'}
           </motion.button>
         </form>
-
-        <div style={{ marginTop: '1rem', padding: '1rem', backgroundColor: 'var(--border-color)', borderRadius: '8px', fontSize: '0.9rem' }}>
-          <strong>Demo Credentials:</strong><br />
-          Username: admin<br />
-          Password: 1234
-        </div>
       </motion.div>
     </motion.div>
   )
